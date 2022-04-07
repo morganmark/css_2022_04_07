@@ -1,0 +1,39 @@
+body.main {
+  background-image: url(img/mainImg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+p {
+  color: rgba(0, 0, 255, 0.425);
+  background-color: rgba(255, 255, 0, 0.247);
+  font-size: 60px;
+  text-align: left;
+}
+
+p.class1 {
+  color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(240, 248, 255, 0.178);
+  font-size: large;
+  text-align: center;
+}
+
+p#id1 {
+  color: rgba(0, 0, 0, 0.815);
+  text-align: right;
+}
+
+div.class2 {
+  color: blueviolet;
+  text-align: center;
+  border: 4px double rgb(58, 190, 18);
+  border-width: 5px;
+  border-radius: 20px;
+}
+
+div.class2 h1 {
+  color: rgba(250, 235, 215, 0.438);
+  text-align: left;
+  border: 9px groove rgba(206, 122, 13, 0.5);
+  background-color: rgba(220, 20, 60, 0.363);
+  border-radius: 50px;
+}
