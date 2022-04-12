@@ -1,0 +1,148 @@
+header {
+  background-color: rgba(255, 0, 0, 0.555);
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+main {
+  background-image: url(/test/img/mainBG.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  height: 500px;
+  text-align: center;
+}
+footer {
+  background-color: rgba(255, 255, 0, 0.151);
+  width: 100%;
+  height: 150px;
+  text-align: center;
+}
+/*header*/
+#img1 {
+  width: 105px;
+  float: left;
+  border-radius: 50%;
+  /*opacity: 50%;*/
+}
+/*圖片搖晃*/
+.img1:hover {
+  animation: shake 0.7s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+#img2 {
+  width: 99px;
+  float: right;
+  border-radius: 20%;
+  opacity: 80%;
+}
+
+/*按鈕特效*/
+.btn {
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 28px;
+  cursor: pointer;
+  border-radius: 25%;
+}
+
+.success {background-color: #04AA6D;} /* Green */
+.success:hover {background-color: #46a049;}
+
+.info {background-color: #2196F3;} /* Blue */
+.info:hover {background: #0b7dda;}
+
+.warning {background-color: #ff9800;} /* Orange */
+.warning:hover {background: #e68a00;}
+
+.danger {background-color: #f44336;} /* Red */ 
+.danger:hover {background: #da190b;}
+
+.default {background-color: #e7e7e7; color: black;} /* Gray */ 
+.default:hover {background: #ddd;}
+
+/*----------------------------------------------*/
+/*main*/
+#img3 {
+  width: 105px;
+  float: left;
+  border-radius: 50%;
+  opacity: 50%;
+}
+#img4 {
+  width: 100px;
+  float: right;
+  border-radius: 20%;
+  opacity: 50%;
+}
+/*動態表格*/
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  opacity: 50%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid rgb(190, 49, 49);
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #5025c7;
+  color: white;
+}
+/*----------------------------------------------*/
+/*footer*/
+.marquee1 {
+  font-size: 100px;
+  color: rgb(221, 25, 25);
+}
