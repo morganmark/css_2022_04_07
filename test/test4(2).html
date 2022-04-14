@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <title>兩欄式版面</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="test4(2).css" />
+    <!--放大鏡圖-->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      .img-magnifier-container {
+        position: absolute;
+        width:600px;
+         height:400px;
+      }
+      .img-magnifier-glass {
+        position: absolute;
+        border: 3px solid #000;
+        border-radius: 50%;
+        cursor: none;
+        /*Set the size of the magnifier glass:*/
+        width: 100px;
+        height: 100px;
+      }
+    </style>
+    <script>
+      function magnify(imgID, zoom) {
+        var img, glass, w, h, bw;
+        img = document.getElementById(imgID);
+        /*create magnifier glass:*/
+        glass = document.createElement("DIV");
+        glass.setAttribute("class", "img-magnifier-glass");
+        /*insert magnifier glass:*/
+        img.parentElement.insertBefore(glass, img);
+        /*set background properties for the magnifier glass:*/
+        glass.style.backgroundImage = "url('" + img.src + "')";
+        glass.style.backgroundRepeat = "no-repeat";
+        glass.style.backgroundSize =
+          img.width * zoom + "px " + img.height * zoom + "px";
+        bw = 3;
+        w = glass.offsetWidth / 2;
+        h = glass.offsetHeight / 2;
+        /*execute a function when someone moves the magnifier glass over the image:*/
+        glass.addEventListener("mousemove", moveMagnifier);
+        img.addEventListener("mousemove", moveMagnifier);
+        /*and also for touch screens:*/
+        glass.addEventListener("touchmove", moveMagnifier);
+        img.addEventListener("touchmove", moveMagnifier);
+        function moveMagnifier(e) {
+          var pos, x, y;
+          /*prevent any other actions that may occur when moving over the image*/
+          e.preventDefault();
+          /*get the cursor's x and y positions:*/
+          pos = getCursorPos(e);
+          x = pos.x;
+          y = pos.y;
+          /*prevent the magnifier glass from being positioned outside the image:*/
+          if (x > img.width - w / zoom) {
+            x = img.width - w / zoom;
+          }
+          if (x < w / zoom) {
+            x = w / zoom;
+          }
+          if (y > img.height - h / zoom) {
+            y = img.height - h / zoom;
+          }
+          if (y < h / zoom) {
+            y = h / zoom;
+          }
+          /*set the position of the magnifier glass:*/
+          glass.style.left = x - w + "px";
+          glass.style.top = y - h + "px";
+          /*display what the magnifier glass "sees":*/
+          glass.style.backgroundPosition =
+            "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
+        }
+        function getCursorPos(e) {
+          var a,
+            x = 0,
+            y = 0;
+          e = e || window.event;
+          /*get the x and y positions of the image:*/
+          a = img.getBoundingClientRect();
+          /*calculate the cursor's x and y coordinates, relative to the image:*/
+          x = e.pageX - a.left;
+          y = e.pageY - a.top;
+          /*consider any page scrolling:*/
+          x = x - window.pageXOffset;
+          y = y - window.pageYOffset;
+          return { x: x, y: y };
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header></header>
+
+    <aside class="a1">
+      <button class="accordion">Page 1</button>
+      <div class="panel">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">Page 2</button>
+      <div class="panel">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">Page 3</button>
+      <div class="panel">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+      </div>
+      <button class="accordion">史上最強大魔王轉生為村民A</button>
+      <div class="panel">
+        <p>
+          瓦爾瓦德斯是史上最強的大魔王，一敗難求，其名甚至流傳千古，成為神話中的人物。正因如此，他身旁的人漸漸視他為敬畏的對象，讓他感到孤獨。於是魔法才華洋溢的他創造了轉生魔法，留下遺書，便發動魔法，轉生至三千年後，成為能力為平均值的人族，祈盼在將來能夠平凡地生活，跟朋友過著一同歡笑快活的日子。不過，怕生、不擅交際的他到12歲都未能交到第一個朋友。到了有一天，他在山上遇見遭上古狼襲擊的精靈少女伊莉娜，出手相救，才終於認識了第一個朋友。
+        </p>
+      </div>
+      <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+          acc[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+              panel.style.display = "none";
+            } else {
+              panel.style.display = "block";
+            }
+          });
+        }
+      </script>
+    </aside>
+
+    <main>
+      <!--放大鏡圖-->
+      <div class="img-magnifier-container">
+        <img id="myimage" src="/test/img/mainBG.jpg" width="600px" height="400px" style="text-align: center;" />
+      </div>
+      <script>
+        /* Initiate Magnify Function
+        with the id of the image, and the strength of the magnifier glass:*/
+        magnify("myimage", 3);
+      </script>
+    </main>
+
+    <aside class="a2"></aside>
+
+    <footer></footer>
+  </body>
+</html>
